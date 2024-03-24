@@ -1,6 +1,6 @@
 # Running Healinium with Docker
 
-This guide will walk you through the steps to download and start Docker, and then execute Healinium within a Docker container.
+This guide will walk you through the steps to download and start Docker, and then execute Healinium within a Docker container. Also, this guide will walk you through the steps to add Healinium as a dependency in your Maven project, initialize the self-healing driver, and configure the `healinium.properties` file.
 
 ## Prerequisites
 
@@ -22,8 +22,6 @@ Before you begin, ensure you have the following prerequisites installed on your 
 
    # Using Healinium with Maven
 
-This guide will walk you through the steps to add Healinium as a dependency in your Maven project, initialize the self-healing driver, and configure the `healinium.properties` file.
-
 ## Step 3: Add Healinium Dependency to Your Maven Project
 
 1. Open your project's `pom.xml` file.
@@ -37,23 +35,21 @@ This guide will walk you through the steps to add Healinium as a dependency in y
 
 Note: get latest dependency from https://mvnrepository.com/artifact/com.epam.healenium/healenium-web
 
-## Step 4: Add Healinium Dependency to Your Maven Project
+## Step 4: Initialize the Self-Healing Driver in Your Test Code
 
-Initialize the Self-Healing Driver in Your Test Code
 In your test code, initialize the self-healing driver before performing any actions on the web application.
 Here's an example of how you can initialize the self-healing driver:
 
       WebDriver driver;
       WebDriverManager.chromedriver().setup();
-		WebDriver chromedriver = new ChromeDriver();
-		// declare delegate
-		// create Self-healing driver
-		driver = SelfHealingDriver.create(chromedriver);
-		driver.manage().window().maximize();
+      WebDriver chromedriver = new ChromeDriver();
+      // declare delegate
+      // create Self-healing driver
+      driver = SelfHealingDriver.create(chromedriver);
+      driver.manage().window().maximize();
 
-## Step 5: Add Healinium Dependency to Your Maven Project
+## Step 5: Configure the healinium.properties File
 
-Configure the healinium.properties File
 Create a file named healinium.properties in the root directory of your project.
 Add the following properties to the file:
     recovery-tries = 1
@@ -81,13 +77,14 @@ project-root/
     └── db/
         └── sql/
             └── init.sql
-Have the healenium authorization uder init.sql
+	    
+Have the healenium authorization under init.sql:
    CREATE SCHEMA healenium AUTHORIZATION healenium_user;
    GRANT USAGE ON SCHEMA healenium TO healenium_user;
 
 ## Step 7: Create the docker-compose.yaml File
 
-This guide will walk you through the steps to use Docker Compose to manage the deployment of infrastructure components using a docker-compose.yaml file located inside the `infra` folder.
+here is the steps to use Docker Compose to manage the deployment of infrastructure components using a docker-compose.yaml file located inside the `infra` folder.
 
  1. Navigate to the `infra` folder in your project directory.
  2. Create a new file named `docker-compose.yaml`.
@@ -100,7 +97,7 @@ This guide will walk you through the steps to use Docker Compose to manage the d
 You can verify docker container running in docker desktop
 ![image](https://github.com/somyasinha15/HealeniumWebDocker/assets/93726730/69dc196e-bdd2-4d3c-8408-4a24b02e11e8)
 
-## Step 9: Execute your Test and find selector details inside http://localhost:7878/healenium/selectors/
+## Step 9: Execute your Test and find selector details
 
 Your test will now have self healing capability after first run, even if the locators changes in the sencond or any other consecutive run the execution will not fail.
 
