@@ -99,3 +99,12 @@ This guide will walk you through the steps to use Docker Compose to manage the d
 
 You can verify docker container running in docker desktop
 ![image](https://github.com/somyasinha15/HealeniumWebDocker/assets/93726730/69dc196e-bdd2-4d3c-8408-4a24b02e11e8)
+
+## Step 9: Execute your Test and find selector details inside http://localhost:7878/healenium/selectors/
+
+Your test will now have self healing capability after first run, even if the locators changes in the sencond or any other consecutive run the execution will not fail.
+
+Locator detail can be seen http://localhost:7878/healenium/selectors/
+
+![image](https://github.com/somyasinha15/HealeniumWebDocker/assets/93726730/46255298-bd36-4dff-95df-ee3cca04bf6b)
+
