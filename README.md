@@ -24,16 +24,15 @@ Before you begin, ensure you have the following prerequisites installed on your 
 
 This guide will walk you through the steps to add Healinium as a dependency in your Maven project, initialize the self-healing driver, and configure the `healinium.properties` file.
 
-## Step 1: Add Healinium Dependency to Your Maven Project
+## Step 3: Add Healinium Dependency to Your Maven Project
 
 1. Open your project's `pom.xml` file.
 2. Add the following dependency to the `<dependencies>` section:
 
-   ```xml
   <dependency>
-			<groupId>com.epam.healenium</groupId>
-			<artifactId>healenium-web</artifactId>
-			<version>3.5.0</version>
+    <groupId>com.epam.healenium</groupId>
+    <artifactId>healenium-web</artifactId>
+    <version>3.5.0</version>
 </dependency>
 
 Note: get latest dependency from https://mvnrepository.com/artifact/com.epam.healenium/healenium-web
