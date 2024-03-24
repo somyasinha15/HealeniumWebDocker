@@ -50,3 +50,52 @@ Here's an example of how you can initialize the self-healing driver:
 		// create Self-healing driver
 		driver = SelfHealingDriver.create(chromedriver);
 		driver.manage().window().maximize();
+
+## Step 5: Add Healinium Dependency to Your Maven Project
+
+Configure the healinium.properties File
+Create a file named healinium.properties in the root directory of your project.
+Add the following properties to the file:
+    recovery-tries = 1
+    score-cap = 0.5
+    heal-enabled = true
+    hlm.server.url = http://localhost:7878
+    hlm.imitator.url = http://localhost:8000
+
+recovery-tries - list of proposed healed locators
+
+heal-enabled - flag to enable or disable healing. Also you can set this value via -D or System properties, for example to turn off healing for current test run: -Dheal-enabled=false
+
+score-cap - score value to enable healing with predefined probability of match (0.5 means that healing will be performed for new healed locators where probability of match with target one is >=50% )
+
+hlm.server.url - ip:port or name where hlm-backend instance is installed
+
+hlm.imitator.url - ip:port or name where imitate instance is installed
+
+Refer : folder healeniumweb/src/test/resources/healenium.properties
+
+## Step 6: Create init.sql inside folder structure 
+
+project-root/
+└── infra/
+    └── db/
+        └── sql/
+            └── init.sql
+Have the healenium authorization uder init.sql
+   CREATE SCHEMA healenium AUTHORIZATION healenium_user;
+   GRANT USAGE ON SCHEMA healenium TO healenium_user;
+
+## Step 7: Create the docker-compose.yaml File
+
+This guide will walk you through the steps to use Docker Compose to manage the deployment of infrastructure components using a docker-compose.yaml file located inside the `infra` folder.
+
+ 1. Navigate to the `infra` folder in your project directory.
+ 2. Create a new file named `docker-compose.yaml`.
+
+## Step 8: Start Docker and Execute the test with Healenium Enabled
+
+   1. Open cmd/terminal and navigate to infra folder containing file named `docker-compose.yaml`
+   2. Run command "docker-compose up -d"
+
+You can verify docker container running in docker desktop
+![image](https://github.com/somyasinha15/HealeniumWebDocker/assets/93726730/69dc196e-bdd2-4d3c-8408-4a24b02e11e8)
