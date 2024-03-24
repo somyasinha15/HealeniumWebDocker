@@ -23,6 +23,8 @@ public class SharedResource {
 		driver.manage().window().maximize();
 		driver.get("https://www.google.com/");
 		System.out.println("Before Click");
+
+		// Here even if the Gmail link changes the test will pass as it will be healed by Healenium
 		driver.findElement(By.xpath("//a[text()='Gmail']")).click();
 		System.out.println("After Click");
 
