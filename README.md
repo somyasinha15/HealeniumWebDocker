@@ -37,3 +37,16 @@ This guide will walk you through the steps to add Healinium as a dependency in y
 
 Note: get latest dependency from https://mvnrepository.com/artifact/com.epam.healenium/healenium-web
 
+## Step 4: Add Healinium Dependency to Your Maven Project
+
+Initialize the Self-Healing Driver in Your Test Code
+In your test code, initialize the self-healing driver before performing any actions on the web application.
+Here's an example of how you can initialize the self-healing driver:
+
+      WebDriver driver;
+      WebDriverManager.chromedriver().setup();
+		WebDriver chromedriver = new ChromeDriver();
+		// declare delegate
+		// create Self-healing driver
+		driver = SelfHealingDriver.create(chromedriver);
+		driver.manage().window().maximize();
